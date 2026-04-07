@@ -1,12 +1,14 @@
+import ProjectCard from "@/components/ProjectCard";
+import { projects } from "@/data/projects";
+
 export default function Home() {
   return (
-    <main
-      style={{ backgroundColor: 'var(--color-background)' }}
-      className='min-h-screen p-12'
-    >
-      <h1 className='text-4xl text-(--color-text-accent)'>Titre H1</h1>
-      <p className='mt-4 text-(--color-text-muted)'>Texte secondaire</p>
-      <div className='glass mt-8 w-64 p-6'>Carte glassmorphism</div>
+    <main style={{ backgroundColor: "var(--color-background)" }} className="min-h-screen p-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </div>
     </main>
   );
 }
