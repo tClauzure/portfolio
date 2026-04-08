@@ -2,7 +2,6 @@
 
 import { projects } from '@/data/projects';
 import { Tags } from '@/lib/type';
-import { Tag } from 'lucide-react';
 import { useState } from 'react';
 import ProjectCard from './ProjectCard';
 
