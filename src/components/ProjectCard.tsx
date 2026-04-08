@@ -46,6 +46,21 @@ export default function ProjectCard({ project }: { project: Project }) {
         >
           {project.description}
         </p>
+        <div className='mt-4 flex flex-wrap gap-2'>
+          {project.tags.map(tag => (
+            <span
+              key={tag}
+              className='rounded-full px-2 py-1 font-mono text-xs'
+              style={{
+                color: 'var(--text-accent)',
+                border: '1px solid var(--text-accent)',
+                opacity: 0.7,
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
