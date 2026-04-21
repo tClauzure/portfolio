@@ -32,6 +32,7 @@ export default function ProjectGrid({}) {
             color:
               activeTag === null ? 'var(--background)' : 'var(--text-muted)',
             border: `1px solid ${activeTag === null ? 'var(--text-accent)' : 'rgba(255,255,255,0.1)'}`,
+            cursor: 'pointer',
           }}
         >
           Tous
@@ -48,6 +49,7 @@ export default function ProjectGrid({}) {
               color:
                 activeTag === tag ? 'var(--background)' : 'var(--text-muted)',
               border: `1px solid ${activeTag === tag ? 'var(--text-accent)' : 'rgba(255,255,255,0.1)'}`,
+              cursor: 'pointer',
             }}
           >
             {tag}
