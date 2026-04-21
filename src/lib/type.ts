@@ -11,7 +11,7 @@ export interface Project {
   title: string;
   description: string;
   tags: Tags[]; // ["React", "Node", "Postgres"]
-  url: string; // lien live
+  url: string | undefined; // lien live
   repo?: string; // lien GitHub (optionnel)
   image: string; // screenshot
   featured: boolean; // mis en avant sur le hero ?
