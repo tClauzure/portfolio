@@ -1,3 +1,4 @@
+import Contact from '@/components/Contact';
 import Hero from '@/components/Hero';
 import Navbar from '@/components/Navbar';
 import ProjectGrid from '@/components/ProjectGrid';
@@ -11,8 +12,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ProjectGrid />
-      {/* Section contact — vide pour l'instant */}
-      <section id='contact' className='min-h-screen' />
+      <Contact />
     </main>
   );
 }
