@@ -12,26 +12,27 @@ export default function Conatct() {
 
   const handleSubmit = async () => {
     if (!name || !email || !message) {
-      setStatus('loading');
+      setStatus('error');
+      return;
+    }
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
 
-      try {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, message }),
-        });
-
-        if (res.ok) {
-          setStatus('success');
-          setName('');
-          setEmail('');
-          setMessage('');
-        } else {
-          setStatus('error');
-        }
-      } catch {
+      if (res.ok) {
+        setStatus('success');
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
         setStatus('error');
       }
+    } catch {
+      setStatus('error');
     }
   };
 
@@ -50,12 +51,13 @@ export default function Conatct() {
       >
         Une idée de projet, une opportunité ou juste envie d'échanger ?
         <br />
-        Envoie-moi un message, je te répondrai rapidement.
+        Envoie-moi un message, je vous répondrai rapidement.
       </p>
 
       {/* Formulaire */}
       <div className='flex flex-col gap-4'>
         <input
+          id='input_name'
           type='text'
           placeholder='Ton nom'
           value={name}
@@ -64,6 +66,7 @@ export default function Conatct() {
         />
 
         <input
+          id='input_email'
           type='email'
           placeholder='Ton email'
           value={email}
@@ -72,6 +75,7 @@ export default function Conatct() {
         />
 
         <textarea
+          id='input_message'
           placeholder='Ton message'
           value={message}
           onChange={e => setMessage(e.target.value)}
@@ -116,7 +120,7 @@ export default function Conatct() {
             className='text-center font-mono text-sm'
             style={{ color: 'var(--text-accent)' }}
           >
-            ✓ Message envoyé, je te répondrai bientôt !
+            ✓ Message envoyé, je vous répondrai bientôt !
           </p>
         )}
         {status === 'error' && (
@@ -124,7 +128,7 @@ export default function Conatct() {
             className='text-center font-mono text-sm'
             style={{ color: '#f87171' }}
           >
-            ✗ Une erreur est survenue, réessaie plus tard.
+            ✗ Merci de remplir tous les champs.
           </p>
         )}
       </div>
